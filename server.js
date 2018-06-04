@@ -16,8 +16,7 @@ module.exports = function startServer(options) {
     this.server = http.createServer(serveResponse.bind(this));
     this.server.listen({
         host: this.options.host,
-        port: this.options.port,
-        path: this.options.path
+        port: this.options.port
     });
 
     return this;
