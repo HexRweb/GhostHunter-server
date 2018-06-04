@@ -1,0 +1,14 @@
+{
+  "name": "ghosthunter-server",
+  "version": "0.0.1",
+  "description": "Make GhostHunter accessible as an API",
+  "main": "server.js",
+  "repository": "https://github.com/hexrweb/ghosthunter-server",
+  "author": "HexR <hello@hexr.org>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "got": "8.3.1",
+    "lunr": "2.2.1"
+  }
+}
