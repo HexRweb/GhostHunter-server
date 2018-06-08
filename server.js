@@ -24,8 +24,9 @@ module.exports = function startServer(options) {
     if (this.options.refreshInterval) {
         this.refreshID = setInterval(() => {
             console.log('[Index] Refreshing');
-            this.indexer.createIndex()
+            this.indexer.createIndex(true)
                 .then(() => console.log('[Index] refreshed'))
+                // @todo: fallback to old index???
                 .catch(errorAndExit);
         }, this.options.refreshInterval);
     } else {
