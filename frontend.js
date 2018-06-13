@@ -29,7 +29,7 @@ function ghRequest(url, callback) {
 	req.send();
 }
 
-function ghostHunterFrontend(options) {
+function ghostHunterFrontend(input, options) {
 	function format(t, d) {
 		return t.replace(/{{([^{}]*)}}/g, function (a, b) {
 			var r = d[b];
@@ -38,6 +38,11 @@ function ghostHunterFrontend(options) {
 	}
 
 	/* Begin data processsing */
+
+	if (typeof input === "string") {
+		input = document.querySelector(input);
+	}
+
 	var required_params = ['endpoint', 'results'];
 	var defaults = {
 		resultsData: false,
@@ -81,8 +86,9 @@ function ghostHunterFrontend(options) {
 	this.target = this.options.target || document.querySelector(this.results).closest('form');
 	this.target.onsubmit = function search(event) {
 		event.preventDefault();
-		this.search(this.querySelector('input[type=text]').value)
+		this.search(this.input.value)
 	}
+	this.input = input;
 
 	/* Begin act of searching */
 	this._search = function(err, items) {
