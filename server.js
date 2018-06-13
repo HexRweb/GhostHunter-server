@@ -13,7 +13,8 @@ module.exports = function startServer(options) {
         port: 3000,
         path: '/',
         ghostHunter: {},
-        refreshInterval: 1000 * 60 * 60 * 6 // Refresh the index every 6 hours
+        refreshInterval: 1000 * 60 * 60 * 6, // Refresh the index every 6 hours
+        allowedOrigins: []
     }, options);
     this.indexer = new GhostHunter(options.ghostHunter);
     console.log('[Index] Creating initial index');
