@@ -187,40 +187,40 @@ Loading `frontend.js` exposes 3 global functions
  - Parameters: Input (either a dom element or a querySelector-friendly string), Options (an object)
     - required: `input`, `options.results`, `options.endpoint`
  - Supported options:
-  - `result_template`
-   - Description: The template for results items
-   - Default: `<a href='{{link}}'><p><h2>{{title}}</h2><strong>{{pubDate}}</strong></p></a>`
-   - Available template data: `title`, `description`, `pubDate`, `featureImage`, `link`
-   - Uses handlebars-like templating (although there's no logic allowed)
-  - `info_template`
-   - Description: The template for meta info
-   - Default: `<p>Number of posts found: {{amount}}</p>`
-   - Available template data: `amount`, `plural`, `search`
-    - plural will just be a single `s` if the number of results is not 1 - i.e `{{amount}} post{{plural}} found for {{search}}`
-    - search is HTML-escaped
-   - Uses handlebars-like templating (although there's no logic allowed)
-  - `displaySearchInfo`
-    - Description: Whether to render the template for meta info in the results element
-    - Default: true
-  - `zeroResultsInfo`
-    - Description: Wheter to render the template for meta info when there are no results
-    - Default: true
-  - `before`
-    - Description: The function to run before the endpoint response is handled
-    - Default: false
-    - No parameters are supplied to the function
-  - `onComplete`
-    - Description: The function to run after the endpoint response is handled
-    - Default: false
-    - No parameters are supplied to the function
-  - `endpoint`
-    - Description: The endpoint which processes search requests
-    - Default: none
-    - This is required. ghostHunterFrontend will fail if you don't provide it
-  - `results`
-    - Description: The dom element or a querySelector-friendly string of the _existing_ element to render results
-    - Default: none
-    - This is required. ghostHunterFrontend will fail if you don't provide it
+   - `result_template`
+     - Description: The template for results items
+     - Default: `<a href='{{link}}'><p><h2>{{title}}</h2><strong>{{pubDate}}</strong></p></a>`
+     - Available template data: `title`, `description`, `pubDate`, `featureImage`, `link`
+     - Uses handlebars-like templating (although there's no logic allowed)
+   - `info_template`
+     - Description: The template for meta info
+     - Default: `<p>Number of posts found: {{amount}}</p>`
+     - Available template data: `amount`, `plural`, `search`
+     - plural will just be a single `s` if the number of results is not 1 - i.e `{{amount}} post{{plural}} found for {{search}}`
+     - search is HTML-escaped
+     - Uses handlebars-like templating (although there's no logic allowed)
+   - `displaySearchInfo`
+     - Description: Whether to render the template for meta info in the results element
+     - Default: true
+   - `zeroResultsInfo`
+     - Description: Wheter to render the template for meta info when there are no results
+     - Default: true
+   - `before`
+     - Description: The function to run before the endpoint response is handled
+     - Default: false
+     - No parameters are supplied to the function
+   - `onComplete`
+     - Description: The function to run after the endpoint response is handled
+     - Default: false
+     - No parameters are supplied to the function
+   - `endpoint`
+     - Description: The endpoint which processes search requests
+     - Default: none
+     - This is required. ghostHunterFrontend will fail if you don't provide it
+   - `results`
+     - Description: The dom element or a querySelector-friendly string of the _existing_ element to render results
+     - Default: none
+     - This is required. ghostHunterFrontend will fail if you don't provide it
 
 # Issues and Support
 
