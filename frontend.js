@@ -29,6 +29,24 @@ function ghRequest(url, callback) {
 	req.send();
 }
 
+function htmlEscape(text) {
+	var entityMap = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&#39;',
+		'/': '&#x2F;',
+		'`': '&#x60;',
+		'=': '&#x3D;'
+	};
+
+	return String(text).replace(/[&<>"'`=\/]/g, function (s) {
+		return entityMap[s];
+	});
+
+}
+
 function ghostHunterFrontend(input, options) {
 	function format(t, d) {
 		return t.replace(/{{([^{}]*)}}/g, function (a, b) {
@@ -86,6 +104,7 @@ function ghostHunterFrontend(input, options) {
 		this.search(this.input.value)
 	}).bind(this);
 
+
 	/* Begin act of searching */
 	this._search = function(err, items) {
 		var resultNode = document.querySelector(this.options.results);
@@ -106,7 +125,11 @@ function ghostHunterFrontend(input, options) {
 		resultNode.innerHTML = '';
 
 		if(this.options.displaySearchInfo && (this.options.zeroResultsInfo || items.meta.count > 0)) {
-			resultNode.innerHTML = format(this.options.info_template, {amount: items.meta.count});
+			resultNode.innerHTML = format(this.options.info_template, {
+				amount: items.meta.count,
+				plural: items.meta.count !== 1 ? 's' : '',
+				search: htmlEscape(this.input.value)
+			});
 		}
 
 		let html = resultNode.innerHTML;
@@ -124,6 +147,6 @@ function ghostHunterFrontend(input, options) {
 
 	this.search = function(value) {
 		var url = this.endpoint + encodeURIComponent(value);
-		ghRequest(url, this._search);
+		ghRequest(url, this._search.bind(this));
 	}
 }
