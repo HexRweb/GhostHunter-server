@@ -145,6 +145,70 @@ Here are the methods available to be called on a GhostHunter Instance. Note: ini
         - Data will be an array of Blog Posts containing the post title, description, published date as pubDate, featureImage, and link
         - Meta.count will list the length of the data array
 
+# Frontend
+
+GhostHunter isn't just used for indexing, it's also used for rendering! That's why we've implemented a really similar version of their rendering library. We tried our best to make sure there aren't any regressions (if you find one, please [file an issue](#issues-and-support)) but there are some additional features (see the [differences](#differences) section)
+
+The GhostHunter frontend is pretty easy to use - just load the `frontend.js` file that's included  (either via a cdn like [jsdelivr](https://jsdelivr.net) or packaging it with your theme) and instantiate it like below:
+
+```javascript
+// the frontend library should already be loaded
+
+window.search = new ghostHunterFrontend('.search-input', {
+  results: '#results',
+  endpoint: 'https://search.example.com/'
+  // additional options
+});
+```
+
+Loading `frontend.js` exposes 3 global functions
+
+ - ghRequest (GhostHunter Request) is used to make a request to the endpoint, although you can use it in your app as an easy GET (JSOn) request function (using the node-style callback(error, response) function). `ghRequest(url, callback)`
+
+ - htmlEscape will escape HTML attributes from the parameter. This is almost the same code used by [mustache.js](https://github.com/janl/mustache.js/blob/master/mustache.js#L60) `htmlEscape(unEscapedText)`
+
+ - ghostHunterFrontend is the thing you really came here for. Let's dive in!
+
+## ghostHunterFrontend
+
+ - Parameters: Input (either a dom element or a querySelector-friendly string), Options (an object)
+    - required: `input`, `options.results`, `options.endpoint`
+ - Supported options:
+  - `result_template`
+   - Description: The template for results items
+   - Default: `<a href='{{link}}'><p><h2>{{title}}</h2><strong>{{pubDate}}</strong></p></a>`
+   - Available template data: `title`, `description`, `pubDate`, `featureImage`, `link`
+   - Uses handlebars-like templating (although there's no logic allowed)
+  - `info_template`
+   - Description: The template for meta info
+   - Default: `<p>Number of posts found: {{amount}}</p>`
+   - Available template data: `amount`, `plural`, `search`
+    - plural will just be a single `s` if the number of results is not 1 - i.e `{{amount}} post{{plural}} found for {{search}}`
+    - search is HTML-escaped
+   - Uses handlebars-like templating (although there's no logic allowed)
+  - `displaySearchInfo`
+    - Description: Whether to render the template for meta info in the results element
+    - Default: true
+  - `zeroResultsInfo`
+    - Description: Wheter to render the template for meta info when there are no results
+    - Default: true
+  - `before`
+    - Description: The function to run before the endpoint response is handled
+    - Default: false
+    - No parameters are supplied to the function
+  - `onComplete`
+    - Description: The function to run after the endpoint response is handled
+    - Default: false
+    - No parameters are supplied to the function
+  - `endpoint`
+    - Description: The endpoint which processes search requests
+    - Default: none
+    - This is required. ghostHunterFrontend will fail if you don't provide it
+  - `results`
+    - Description: The dom element or a querySelector-friendly string of the _existing_ element to render results
+    - Default: none
+    - This is required. ghostHunterFrontend will fail if you don't provide it
+
 # Issues and Support
 
 Feel free to create an issue if you have any questions, feature requests or found a bug. As of now, there's no specific template, but if this gets too much traction, something will be put in place. If you want to contact us directly, shoot us an email - hello@hexr.org
