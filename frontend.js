@@ -78,7 +78,7 @@ function ghostHunterFrontend(input, options) {
 	delete defaults;
 
 	// Force trailing slash
-	this.endpoint = this.endpoint.replace(/\/$/,'') + '/';
+	this.endpoint = this.options.endpoint.replace(/\/$/,'') + '/';
 
 	/* End data processsing */
 
@@ -92,7 +92,7 @@ function ghostHunterFrontend(input, options) {
 
 	/* Begin act of searching */
 	this._search = function(err, items) {
-		var resultNode = document.querySelector(this.results);
+		var resultNode = document.querySelector(this.options.results);
 		if (err) {
 			resultNode.textContent = 'An unexpected error occurred: ' + (err.message || err);
 		}
@@ -105,7 +105,7 @@ function ghostHunterFrontend(input, options) {
 			this.options.before();
 		}
 
-		if((this.zeroResultsInfo || items.meta.count > 0) && this.displaySearchInfo)
+		if(this.options.displaySearchInfo && (this.options.zeroResultsInfo || items.meta.count > 0))
 		{
 			resultNode.innerHTML = format(this.info_template, {amount: items.meta.count});
 		}
