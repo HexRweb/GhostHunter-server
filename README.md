@@ -8,6 +8,19 @@ GhostHunter is the easiest drop-in for search with Ghost blogs, but as your blog
 
 GhostHunter Server, as the name suggests is GhostHunter which runs on node (serverside javascript), which means there isn't really an effective storage limit. It's a very simplistic implementation of GhostHunter coupled with an API endpoint which executes the search using GhostHunter's backend ([lunr](https://github.com/olivernn/lunr.js#installation)) and proxies the results as a JSON response
 
+# Differences
+
+There are a couple of notable differences compared to the original GhostHunter:
+
+## Frontend
+
+ - `result_template` uses the `pubDate` helper instead of `prettyPubDate` helper
+ - `info_template` supports the `search` and `plural` helpers
+
+## Backend
+
+No documented differences. If you find one, please [report it](#issues-and-support)
+
 # Installation
 
 ## 1. Add dependency
