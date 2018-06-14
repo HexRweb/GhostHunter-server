@@ -9,7 +9,7 @@ function ghRequest(url, callback) {
 	}
 
 	var req = new XMLHttpRequest();
-	req.on('error', function reqFailed() {
+	req.addEventListener('error', function reqFailed() {
 		callback(new Error('Unable to connect to search service'));
 	});
 	req.onreadystatechange = function stateChange() {
