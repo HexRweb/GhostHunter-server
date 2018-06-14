@@ -37,7 +37,7 @@ function ghostHunterFrontend(input, options) {
 		});
 	}
 
-	/* Begin data processsing */
+	/* Begin data processing */
 
 	if (typeof input === "string") {
 		input = document.querySelector(input);
@@ -64,8 +64,6 @@ function ghostHunterFrontend(input, options) {
 		}
 	}
 
-	delete required_params;
-
 	this.options = {};
 	var opts = Object.keys(defaults);
 
@@ -74,13 +72,10 @@ function ghostHunterFrontend(input, options) {
 		this.options[opt] = options[opt] || defaults[opt];
 	}
 
-	delete opts;
-	delete defaults;
-
 	// Force trailing slash
 	this.endpoint = this.options.endpoint.replace(/\/$/,'') + '/';
 
-	/* End data processsing */
+	/* End data processing */
 
 	// Get target and search on submit
 	this.target = this.options.target || document.querySelector(this.results).closest('form');
@@ -105,8 +100,7 @@ function ghostHunterFrontend(input, options) {
 			this.options.before();
 		}
 
-		if(this.options.displaySearchInfo && (this.options.zeroResultsInfo || items.meta.count > 0))
-		{
+		if(this.options.displaySearchInfo && (this.options.zeroResultsInfo || items.meta.count > 0)) {
 			resultNode.innerHTML = format(this.info_template, {amount: items.meta.count});
 		}
 
