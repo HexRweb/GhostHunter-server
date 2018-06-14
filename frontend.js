@@ -17,7 +17,7 @@ function ghRequest(url, callback) {
 			var res;
 
 			try {
-				res = JSON.parse(res);
+				res = JSON.parse(req.response);
 			} catch (e) {
 				return callback(new Error('Unable to read response'));
 			}
@@ -67,7 +67,7 @@ function ghostHunterFrontend(input, options) {
 	delete required_params;
 
 	this.options = {};
-	var opts = Object.keys(options);
+	var opts = Object.keys(defaults);
 
 	for (var i = 0; i < opts.length; i++) {
 		var opt = opts[i];
