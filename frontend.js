@@ -1,7 +1,7 @@
 'use strict';
 
 function ghRequest(url, callback) {
-	if (fetch in window) {
+	if ('fetch' in window) {
 		return fetch(url)
 			.then(res => res.json())
 			.then(res => callback(null, res))
