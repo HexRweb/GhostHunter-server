@@ -77,13 +77,14 @@ function ghostHunterFrontend(input, options) {
 
 	/* End data processing */
 
+	this.input = input;
+
 	// Get target and search on submit
-	this.target = this.options.target || document.querySelector(this.results).closest('form');
-	this.target.onsubmit = function search(event) {
+	this.target = this.input.closest('form');
+	this.target.onsubmit = (function search(event) {
 		event.preventDefault();
 		this.search(this.input.value)
-	}
-	this.input = input;
+	}).bind(this)
 
 	/* Begin act of searching */
 	this._search = function(err, items) {
