@@ -57,8 +57,12 @@ function ghostHunterFrontend(input, options) {
 
 	/* Begin data processing */
 
-	if (typeof input === "string") {
+	if (typeof input === 'string') {
 		input = document.querySelector(input);
+	}
+
+	if (typeof options.results === 'string') {
+		options.results = document.querySelector(options.results);
 	}
 
 	var required_params = ['endpoint', 'results'];
@@ -104,7 +108,7 @@ function ghostHunterFrontend(input, options) {
 
 	/* Begin act of searching */
 	this._search = function(err, items) {
-		var resultNode = document.querySelector(this.options.results);
+		var resultNode = this.options.results;
 
 		if (this.options.before) {
 			this.options.before();
