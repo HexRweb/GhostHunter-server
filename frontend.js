@@ -48,7 +48,7 @@ function ghostHunterFrontend(input, options) {
 		resultsData: false,
 		onPageLoad: true,
 		onKeyUp: false,
-		result_template: "<a href='{{link}}'><p><h2>{{title}}</h2><strong>{{prettyPubDate}}</strong></p></a>",
+		result_template: "<a href='{{link}}'><p><h2>{{title}}</h2><strong>{{pubDate}}</strong></p></a>",
 		info_template: "<p>Number of posts found: {{amount}}</p>",
 		displaySearchInfo: true,
 		zeroResultsInfo: true,
