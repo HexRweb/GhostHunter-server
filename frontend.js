@@ -96,6 +96,7 @@ function ghostHunterFrontend(input, options) {
 
 		if (err) {
 			resultNode.textContent = 'An unexpected error occurred: ' + (err.message || err);
+			return;
 		}
 
 		if (items.errors && items.errors.length) {
