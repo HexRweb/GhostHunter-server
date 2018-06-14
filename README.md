@@ -162,7 +162,7 @@ Here are the methods available to be called on a GhostHunter Instance. Note: ini
 
 GhostHunter isn't just used for indexing, it's also used for rendering! That's why we've implemented a really similar version of their rendering library. We tried our best to make sure there aren't any regressions (if you find one, please [file an issue](#issues-and-support)) but there are some additional features (see the [differences](#differences) section)
 
-The GhostHunter frontend is pretty easy to use - just load the `frontend.js` file that's included  (either via a cdn like [jsdelivr](https://jsdelivr.net) or packaging it with your theme) and instantiate it like below:
+The GhostHunter frontend is pretty easy to use - just load the `frontend/frontend.min.js` file that's included  (either via a cdn like [jsdelivr](https://jsdelivr.net) or packaging it with your theme) and instantiate it like below:
 
 ```javascript
 // the frontend library should already be loaded

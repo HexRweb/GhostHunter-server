@@ -1,13 +1,5 @@
-'use strict';
-
 function ghRequest(url, callback) {
-	if ('fetch' in window) {
-		return fetch(url)
-			.then(res => res.json())
-			.then(res => callback(null, res))
-			.catch(callback)
-	}
-
+	'use strict';
 	var req = new XMLHttpRequest();
 	req.addEventListener('error', function reqFailed() {
 		callback(new Error('Unable to connect to search service'));
@@ -30,6 +22,7 @@ function ghRequest(url, callback) {
 }
 
 function htmlEscape(text) {
+	'use strict';
 	var entityMap = {
 		'&': '&amp;',
 		'<': '&lt;',
@@ -48,6 +41,7 @@ function htmlEscape(text) {
 }
 
 function ghostHunterFrontend(input, options) {
+	'use strict';
 	function format(t, d) {
 		return t.replace(/{{([^{}]*)}}/g, function (a, b) {
 			var r = d[b];
@@ -133,7 +127,7 @@ function ghostHunterFrontend(input, options) {
 			});
 		}
 
-		let html = resultNode.innerHTML;
+		var html = resultNode.innerHTML;
 
 		for (var i = 0; i < items.data.length; i++) {
 			html += format(this.options.result_template, items.data[i]);
