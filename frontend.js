@@ -10,7 +10,7 @@ function ghRequest(url, callback) {
 
 	var req = new XMLHttpRequest();
 	req.on('error', function reqFailed() {
-		callback(new Error('Unable to connect to search endpoint'));
+		callback(new Error('Unable to connect to search service'));
 	});
 	req.onreadystatechange = function stateChange() {
 		if (this.readyState === 4 && this.status === 200) {
