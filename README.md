@@ -69,6 +69,7 @@ While the GhostHunter class provides the logic for searching, the server functio
  - Host (`host`) - the host to listen on. Does not have a default, which means it will listen on `::` or `0.0.0.0`
  - GhostHunter Class Options (`ghostHunter`) - An object containing options to proxy to the GhostHunter Class upon initialization. Defaults to an empty object
  - Refresh Interval (`refreshInterval`) - How often to refresh the index. Will not refresh if a falsy value is provided. Defaults to 6 hours
+ - Allowed Origins (`allowedOrigins`) - The origins which are allowed to access the endpoint, enforced by hostname. An array _must_ be provided. Note: the check is pretty lenient in terms of origin requirements because enforcing is done by hostname (and not host).
 
 #### Example
 
@@ -88,7 +89,8 @@ const searchInstance = new Server({
       client_secret: 'abcd1ef2gh3'
     },
     includePages: true
-  }
+  },
+  allowedOrigins: ['blog.demo.com', 'demo.ghost.io']
 });
 
 // Close the server after 100 seconds
