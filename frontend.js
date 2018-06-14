@@ -84,7 +84,7 @@ function ghostHunterFrontend(input, options) {
 	this.target.onsubmit = (function search(event) {
 		event.preventDefault();
 		this.search(this.input.value)
-	}).bind(this)
+	}).bind(this);
 
 	/* Begin act of searching */
 	this._search = function(err, items) {
@@ -103,14 +103,16 @@ function ghostHunterFrontend(input, options) {
 			resultNode.textContent = items.errors[0].details;
 		}
 
+		resultNode.innerHTML = '';
+
 		if(this.options.displaySearchInfo && (this.options.zeroResultsInfo || items.meta.count > 0)) {
-			resultNode.innerHTML = format(this.info_template, {amount: items.meta.count});
+			resultNode.innerHTML = format(this.options.info_template, {amount: items.meta.count});
 		}
 
-		let html = '';
+		let html = resultNode.innerHTML;
 
 		for (var i = 0; i < items.data.length; i++) {
-			html += format(this.result_template, items.data[i]);
+			html += format(this.options.result_template, items.data[i]);
 		}
 
 		resultNode.innerHTML = html;
