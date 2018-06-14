@@ -89,16 +89,17 @@ function ghostHunterFrontend(input, options) {
 	/* Begin act of searching */
 	this._search = function(err, items) {
 		var resultNode = document.querySelector(this.options.results);
+
+		if (this.options.before) {
+			this.options.before();
+		}
+
 		if (err) {
 			resultNode.textContent = 'An unexpected error occurred: ' + (err.message || err);
 		}
 
 		if (items.errors && items.errors.length) {
 			resultNode.textContent = items.errors[0].details;
-		}
-
-		if (this.options.before) {
-			this.options.before();
 		}
 
 		if(this.options.displaySearchInfo && (this.options.zeroResultsInfo || items.meta.count > 0)) {
