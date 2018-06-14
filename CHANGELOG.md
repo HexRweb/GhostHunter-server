@@ -1,3 +1,7 @@
+0.3.1
+
+ - Add compiled frontend files
+
 0.3.0
 
  - :tada: Add frontend library
