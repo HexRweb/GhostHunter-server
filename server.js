@@ -2,11 +2,13 @@ const http = require('http');
 const GhostHunter = require('./lib/ghost-hunter');
 const serveResponse = require('./lib/response');
 
+/* eslint-disable unicorn/no-process-exit */
 function errorAndExit(error) {
 	console.error(error);
 	console.log('An unrecoverable error has occurred');
 	process.exit(1);
 }
+/* eslint-enable unicorn/no-process-exit */
 
 module.exports = function startServer(options) {
 	this.options = Object.assign({

@@ -20,6 +20,19 @@
     "xo": "^0.21.1"
   },
   "xo": {
-    "space": true
+    "rules": {
+	  "func-names": ["error", "as-needed"]
+    },
+	"overrides": [
+		{
+			"files": "frontend/*.js",
+			"env": ["browser"],
+			"rules": {
+				"no-var": "off",
+				"prefer-arrow-callback": "off",
+				"func-names": "off"
+			}
+		}
+	]
   }
 }

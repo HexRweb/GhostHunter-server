@@ -1,13 +1,13 @@
 'use strict';
 
 const path = require('path');
-const {minify} = require('uglify-js');
-
 const {readFile, writeFile} = require('fs');
+const {minify} = require('uglify-js');
 
 const INPUT_FILE = path.resolve(__dirname, 'frontend.js');
 const OUTPUT_FILE = path.resolve(__dirname, 'frontend.min.js');
 
+/* eslint-disable unicorn/no-process-exit */
 readFile(INPUT_FILE, 'utf8', (error, file) => {
 	if (error) {
 		console.error(error);
@@ -32,13 +32,13 @@ readFile(INPUT_FILE, 'utf8', (error, file) => {
 		console.warn(result.warnings);
 	}
 
-	writeFile(OUTPUT_FILE, result.code, (writeError) => {
-		if(writeError) {
+	writeFile(OUTPUT_FILE, result.code, writeError => {
+		if (writeError) {
 			console.error(error);
 			process.exit(4);
 		}
 
-		writeFile(`${OUTPUT_FILE}.map`, result.map, (mapWriteError) => {
+		writeFile(`${OUTPUT_FILE}.map`, result.map, mapWriteError => {
 			if (mapWriteError) {
 				console.error(error);
 				process.exit(5);
@@ -49,3 +49,5 @@ readFile(INPUT_FILE, 'utf8', (error, file) => {
 		});
 	});
 });
+
+/* eslint-enable unicorn/no-process-exit */
