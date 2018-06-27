@@ -8,6 +8,10 @@ GhostHunter is the easiest drop-in for search with Ghost blogs, but as your blog
 
 GhostHunter Server, as the name suggests is GhostHunter which runs on node (serverside javascript), which means there isn't really an effective storage limit. It's a very simplistic implementation of GhostHunter coupled with an API endpoint which executes the search using GhostHunter's backend ([lunr](https://github.com/olivernn/lunr.js#installation)) and proxies the results as a JSON response
 
+# :warning: Warnings
+
+ - GhostHunter 0.4.0 and beyond don't support the usage of `client_id` and `client_secret` for the instance object. Use `clientID` and `clientSecret` instead (case sensitive).
+
 # Differences
 
 There are a couple of notable differences compared to the original GhostHunter:
@@ -48,10 +52,10 @@ The required options are wrapped in the `instance` key of the options object. Yo
 
  - Instance URL (`url`) - the HTTP url of your blog instance
    - :warning: the url passed is expected to be a _valid_ HTTP url; GhostHunter-Server doesn't do any additional validation to ensure it is - this url will be [normalized](https://github.com/HexRweb/GhostHunter-server/blob/master/lib/ghost-hunter.js#L10-L21) and directly passed to [got](https://github.com/sindresorhus/got) (the request library we use)
- - Client ID (`client_id`) - The Client ID for read requests via the [Ghost API](https://api.ghost.org/)
+ - Client ID (`clientID`) - The Client ID for read requests via the [Ghost API](https://api.ghost.org/)
    - This isn't used in the normal GhostHunter since Ghost provides a convenience API for this
    - While you're free to use the default Client ID provided by Ghost (`ghost-frontend`), we strongly recommend you [create a new one](https://api.ghost.org/docs/ajax-calls-from-an-external-website#section-how-to-edit-the-database) for better security and tracking
- - Client Secret (`client_secret`) - The Client Secret used to authenticate `client_id` (this is how oAuth works) via the [Ghost API](https://api.ghost.org/)
+ - Client Secret (`clientSecret`) - The Client Secret used to authenticate `clientID` (this is how oAuth works) via the [Ghost API](https://api.ghost.org/)
 
  There is one optional parameter, `includePages`, which is defaulted to `false`. Setting this option to anything truthy will add blog pages to the index
 
@@ -64,8 +68,8 @@ const myInstance = new GhostHunter({
   instance: {
     // example data, doesn't work!
     url: 'https://demo.ghost.io/',
-    client_id: 'ghost-search',
-    client_secret: 'abcd1ef2gh3'
+    clientID: 'ghost-search',
+    clientSecret: 'abcd1ef2gh3'
   },
   includePages: true
 });
@@ -98,8 +102,8 @@ const searchInstance = new Server({
     instance: {
       // example data, doesn't work!
       url: 'https://demo.ghost.io/',
-      client_id: 'ghost-search',
-      client_secret: 'abcd1ef2gh3'
+      clientID: 'ghost-search',
+      clientSecret: 'abcd1ef2gh3'
     },
     includePages: true
   },
