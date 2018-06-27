@@ -131,7 +131,7 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 
 		var html = resultNode.innerHTML;
 
-		for (var i = 0; i < items.data.length; i++) {
+		for (i = 0; i < items.data.length; i++) {
 			html += format(this.options.result_template, items.data[i]);
 		}
 
