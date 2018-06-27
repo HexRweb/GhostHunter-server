@@ -1,6 +1,6 @@
 {
   "name": "ghosthunter-server",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Make GhostHunter accessible as an API",
   "main": "index.js",
   "repository": "https://github.com/hexrweb/ghosthunter-server",
@@ -21,18 +21,23 @@
   },
   "xo": {
     "rules": {
-	  "func-names": ["error", "as-needed"]
+      "func-names": [
+        "error",
+        "as-needed"
+      ]
     },
-	"overrides": [
-		{
-			"files": "frontend/*.js",
-			"env": ["browser"],
-			"rules": {
-				"no-var": "off",
-				"prefer-arrow-callback": "off",
-				"func-names": "off"
-			}
-		}
-	]
+    "overrides": [
+      {
+        "files": "frontend/*.js",
+        "env": [
+          "browser"
+        ],
+        "rules": {
+          "no-var": "off",
+          "prefer-arrow-callback": "off",
+          "func-names": "off"
+        }
+      }
+    ]
   }
 }

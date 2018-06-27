@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.2](https://github.com/HexRweb/GhostHunter-server/compare/v0.3.1...v0.3.2)
+
+ - Fixes:
+  - `includePages` will now include pages (what a novel idea!) in the index
+  - The frontend map file will be useful from now on (the contents weren't persisted, which is apparently important!)
+
+ - Backend
+  - Lots of code formatting updates (We added XO / ESLint)
+  - Dependency updates (no major breaking changes)
+  - Make changelog prettier :lipstick:
+
+
 ## [0.3.1](https://github.com/HexRweb/GhostHunter-server/compare/v0.3.0...v0.3.1)
 
  - Add compiled frontend files
