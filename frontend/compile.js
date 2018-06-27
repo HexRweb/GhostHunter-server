@@ -38,7 +38,7 @@ readFile(INPUT_FILE, 'utf8', (error, file) => {
 			process.exit(4);
 		}
 
-		writeFile(`${OUTPUT_FILE}.map`, (mapWriteError) => {
+		writeFile(`${OUTPUT_FILE}.map`, result.map, (mapWriteError) => {
 			if (mapWriteError) {
 				console.error(error);
 				process.exit(5);
