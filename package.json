@@ -8,13 +8,18 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "compile-frontend": "node frontend/compile.js"
+    "compile-frontend": "node frontend/compile.js",
+    "test": "xo"
   },
   "dependencies": {
     "got": "8.3.1",
     "lunr": "2.2.1"
   },
   "devDependencies": {
-    "uglify-js": "^3.4.0"
+    "uglify-js": "^3.4.0",
+    "xo": "^0.21.1"
+  },
+  "xo": {
+    "space": true
   }
 }
