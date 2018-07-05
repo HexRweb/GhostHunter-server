@@ -11,6 +11,7 @@ GhostHunter Server, as the name suggests is GhostHunter which runs on node (serv
 # :warning: Warnings
 
  - GhostHunter 0.4.0 and beyond don't support the usage of `client_id` and `client_secret` for the instance object. Use `clientID` and `clientSecret` instead (case sensitive).
+ - GhostHonter Frontend 0.4.0 and beyond don't support form.onsubmit (i.e. `document.querySelector('#search').onsubmit(new Event('Search!'))`). Use instance.submitted instead (i.e. `window.search = new ghostHunterFrontend(...);... window.search.submitted(new Event('Search!'))`)
 
 # Differences
 
@@ -20,6 +21,7 @@ There are a couple of notable differences compared to the original GhostHunter:
 
  - `result_template` uses the `pubDate` helper instead of `prettyPubDate` helper
  - `info_template` supports the `search` and `plural` helpers
+ - You can trigger a search by calling `instance.submitted({{Event}})`
 
 ## Backend
 
@@ -234,6 +236,14 @@ Loading `frontend.js` exposes 3 global functions
      - Description: The dom element or a querySelector-friendly string of the _existing_ element to render results
      - Default: none
      - This is required. ghostHunterFrontend will fail if you don't provide it
+ - Properties
+   - `options` - The settings used for functionality. List of keys are available in the previous section
+   - `endpoint` - The HTTP endpoint where the backend lives
+   - `input` - The text input element
+   - `target` - The form element containing `input`
+   - `submitted` - The function that is executed when `target` is submitted. You can call it directly if you please
+   - `_search` - The data processing portion of the search action
+   - `search` - Sends an XHR request to the endpoint
 
 # Issues and Support
 

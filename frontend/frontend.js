@@ -97,10 +97,20 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 
 	// Get target and search on submit
 	this.target = this.input.closest('form');
-	this.target.onsubmit = (function search(event) {
+	this.target.onsubmit = (function deprecatedSearch(event) {
+		// Only act on scripted calls
+		if (!event.isTrusted) {
+			console.warn('GhostHunter-Server:Frontend - element.onsubmit is deprecated. Please use instance.onsubmit. See https://git.io/fbprc');
+			this.search(this.input.value);
+		}
+	}).bind(this);
+
+	this.submitted = function submitted(event) {
 		event.preventDefault();
 		this.search(this.input.value);
-	}).bind(this);
+	};
+
+	this.target.addEventListener('submit', this.submitted.bind(this));
 
 	// Begin act of searching
 	this._search = function (err, items) {
