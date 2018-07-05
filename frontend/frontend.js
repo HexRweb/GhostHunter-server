@@ -116,10 +116,6 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 	this._search = function (err, items) {
 		var resultNode = this.options.results;
 
-		if (this.options.before) {
-			this.options.before();
-		}
-
 		if (err) {
 			resultNode.textContent = 'An unexpected error occurred: ' + (err.message || err);
 			return;
@@ -153,6 +149,11 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 	};
 
 	this.search = function (value) {
+		if (this.options.before) {
+			console.warn('GhostHunter-Server:Frontend - instance.before now runs _before_ the XHR request is sent');
+			this.options.before();
+		}
+
 		var url = this.endpoint + encodeURIComponent(value);
 		ghRequest(url, this._search.bind(this));
 	};
