@@ -57,7 +57,10 @@ The required options are wrapped in the `instance` key of the options object. Yo
    - While you're free to use the default Client ID provided by Ghost (`ghost-frontend`), we strongly recommend you [create a new one](https://api.ghost.org/docs/ajax-calls-from-an-external-website#section-how-to-edit-the-database) for better security and tracking
  - Client Secret (`clientSecret`) - The Client Secret used to authenticate `clientID` (this is how oAuth works) via the [Ghost API](https://api.ghost.org/)
 
- There is one optional parameter, `includePages`, which is defaulted to `false`. Setting this option to anything truthy will add blog pages to the index
+Optional Paramaters:
+
+- Include Pages (`includePages`) - defaulted to `false`; setting this option to anything truthy will add blog pages to the index
+- Absolute URLs (`absolute`) - defaulted to `true`; setting this option to anything falsy will return the relative url. If you're hosting your blog on a subdomain (i.e. https://www.example.com/blog), you should keep this as true, unless you plan on adding the path to your render template
 
  #### Example
 
@@ -71,7 +74,8 @@ const myInstance = new GhostHunter({
     clientID: 'ghost-search',
     clientSecret: 'abcd1ef2gh3'
   },
-  includePages: true
+  includePages: true,
+  absolute: false
 });
  ```
 
@@ -105,7 +109,8 @@ const searchInstance = new Server({
       clientID: 'ghost-search',
       clientSecret: 'abcd1ef2gh3'
     },
-    includePages: true
+	includePages: true,
+	absolute: false
   },
   allowedOrigins: ['blog.demo.com', 'demo.ghost.io']
 });
@@ -127,6 +132,8 @@ Both the initialized GhostHunter Class and server drop-in have properties bound 
 `blogData` - An object with keys (determined by Post ID) mapping to post data. Used by original GhostHunter
 
 `includePages` - Whether or not pages should be included in the index
+
+`absolute` - Whether or not absolute URLs should be used for posts when building blog data
 
 `instance` - The instance properties you need to provide for GhostHunter to request data
 
