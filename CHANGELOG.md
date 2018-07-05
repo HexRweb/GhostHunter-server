@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.4.1](https://github.com/HexRweb/GhostHunter-server/compare/v0.4.0...v0.4.1)
+
+ - :bug: Fix support for deprecated `client_id` (tried to be fancy and it backfired)
+
 ## [0.4.0](https://github.com/HexRweb/GhostHunter-server/compare/v0.3.2...v0.4.0)
 
  - Changes:
