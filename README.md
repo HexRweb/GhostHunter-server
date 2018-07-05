@@ -23,7 +23,9 @@ There are a couple of notable differences compared to the original GhostHunter:
 
 ## Backend
 
-No documented differences. If you find one, please [report it](#issues-and-support)
+ - The API can respond with absolute URLs to posts
+
+If you find any other differences, please [report it](#issues-and-support)
 
 # Installation
 
