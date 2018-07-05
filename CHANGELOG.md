@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.0](https://github.com/HexRweb/GhostHunter-server/compare/v0.3.2...v0.4.0)
+
+ - Changes:
+  - snake_case client credentials for backend instantiation is deprecated. See #5. You can still use it until 1.x is released
+  - calling `form.onsubmit` in the frontend is deprecated. Use `instance.submitted({{Event}}) instead. See #6. You can still use it until 1.x is released
+  - the `before` in the frontend runs before the XHR request is sent. This wasn't an easy decision to make, but based on the usecase and parameters applied to the function, it makes more sense to call it there. This is technically a breaking change, although there should be no blowback.
+
+ - Features:
+  - :sparkles: [backend] - Add support to generate absolute URLs
+
 ## [0.3.2](https://github.com/HexRweb/GhostHunter-server/compare/v0.3.1...v0.3.2)
 
  - Fixes:
