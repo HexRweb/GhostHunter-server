@@ -106,7 +106,7 @@ const {Server} = require('ghosthunter-server');
 
 const searchInstance = new Server({
   port: 3000,
-  path: '/feature/search',
+  path: '/feature/search/',
   host: '127.0.0.1',
   ghostHunter: {
     instance: {
