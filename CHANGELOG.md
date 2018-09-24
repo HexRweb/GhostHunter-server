@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.4.3](https://github.com/HexRweb/GhostHunter-server/compare/v0.4.2...v0.4.3)
+
+ - :bug: Frontend - onComplete was never called, even if you specified a function. That shouldn't happen anymore
+
 ## [0.4.2](https://github.com/HexRweb/GhostHunter-server/compare/v0.4.1...v0.4.2)
 
  - :bug: The generated absolute URLs should now link to the proper blog post (absolutely)!
