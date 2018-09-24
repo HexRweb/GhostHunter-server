@@ -143,8 +143,8 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 
 		resultNode.innerHTML = html;
 
-		if (this.onComplete) {
-			this.onComplete(items.data);
+		if (this.options.onComplete) {
+			this.options.onComplete(items.data);
 		}
 	};
 
