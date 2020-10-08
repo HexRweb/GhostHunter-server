@@ -18,7 +18,7 @@ readFile(INPUT_FILE, 'utf8', (error, file) => {
 		warnings: true,
 		sourceMap: {
 			filename: INPUT_FILE,
-			url: `frontend.min.js.map`
+			url: 'frontend.min.js.map'
 		}
 	});
 

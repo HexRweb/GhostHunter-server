@@ -1,24 +1,25 @@
 function ghRequest(url, callback) {
 	'use strict';
-	var req = new XMLHttpRequest();
-	req.addEventListener('error', function reqFailed() {
+	var request = new XMLHttpRequest();
+	request.addEventListener('error', function requestFailed() {
 		callback(new Error('Unable to connect to search service'));
 	});
-	req.onreadystatechange = function onreadystatechange() {
+	request.onreadystatechange = function onreadystatechange() {
 		if (this.readyState === 4 && this.status === 200) {
-			var res;
+			var response;
 
 			try {
-				res = JSON.parse(req.response);
-			} catch (e) {
+				response = JSON.parse(request.response);
+			} catch {
 				return callback(new Error('Unable to read response'));
 			}
 
-			callback(null, res);
+			callback(null, response);
 		}
 	};
-	req.open('GET', url);
-	req.send();
+
+	request.open('GET', url);
+	request.send();
 }
 
 function htmlEscape(text) {
@@ -59,7 +60,7 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 		options.results = document.querySelector(options.results);
 	}
 
-	var requiredOpts = ['endpoint', 'results'];
+	var requiredOptions = ['endpoint', 'results'];
 	var defaults = {
 		/* eslint-disable camelcase */
 		result_template: '<a href="{{link}}"><p><h2>{{title}}</h2><strong>{{pubDate}}</strong></p></a>',
@@ -74,17 +75,17 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 	};
 	var i;
 
-	for (i = 0; i < requiredOpts.length; i++) {
-		if (!options[requiredOpts[i]]) {
-			throw new Error('Missing required field: ' + requiredOpts[i]);
+	for (i = 0; i < requiredOptions.length; i++) {
+		if (!options[requiredOptions[i]]) {
+			throw new Error('Missing required field: ' + requiredOptions[i]);
 		}
 	}
 
 	this.options = {};
-	var opts = Object.keys(defaults);
+	var options_ = Object.keys(defaults);
 
-	for (i = 0; i < opts.length; i++) {
-		var opt = opts[i];
+	for (i = 0; i < options_.length; i++) {
+		var opt = options_[i];
 		this.options[opt] = options[opt] || defaults[opt];
 	}
 
@@ -97,13 +98,13 @@ function ghostHunterFrontend/* eslint-enable no-unused-vars */(input, options) {
 
 	// Get target and search on submit
 	this.target = this.input.closest('form');
-	this.target.onsubmit = (function deprecatedSearch(event) {
+	this.target.addEventListener('submit', (function deprecatedSearch(event) {
 		// Only act on scripted calls
 		if (!event.isTrusted) {
 			console.warn('GhostHunter-Server:Frontend - element.onsubmit is deprecated. Please use instance.onsubmit. See https://git.io/fbprc');
 			this.search(this.input.value);
 		}
-	}).bind(this);
+	}).bind(this));
 
 	this.submitted = function submitted(event) {
 		event.preventDefault();
