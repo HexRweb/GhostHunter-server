@@ -12,11 +12,11 @@
     "test": "xo"
   },
   "dependencies": {
-    "got": "8.3.1",
-    "lunr": "2.2.1"
+    "got": "11.7.0",
+    "lunr": "2.3.9"
   },
   "devDependencies": {
-    "uglify-js": "^3.4.0",
+    "uglify-js": "^3.11.1",
     "xo": "^0.21.1"
   },
   "xo": {
