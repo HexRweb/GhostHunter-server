@@ -1,3 +1,9 @@
+# Archived
+
+This repository is archived as Ghost has ["native" search](https://github.com/tryGhost/sodo-search)
+
+---
+
 # GhostHunter Server
 
 _Don't like the documentation? Help us make it better by emailing us (hello@hexr.org), [creating an issue](https://github.com/hexrweb/ghosthunter-server/issues/new) or [creating a pull request](https://github.com/hexrweb/ghosthunter-server/compare)_
